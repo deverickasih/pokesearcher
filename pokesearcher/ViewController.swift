@@ -241,29 +241,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }.resume()
         }
         
-        /*if object.image != nil || object.image != "" {
-            
-            if UserDefaults.standard.object(forKey: "\(pokemonImageUrl)\(object.name).png") != nil {
-                print("using saved pokemon image")
-                cell.pokeImage.image = UIImage(data: UserDefaults.standard.object(forKey: "\(pokemonImageUrl)\(object.name).png") as! Data)
-            }
-            
-        }else{
-            print("fetching pokemon image")
-            
-            let url = URL(string: "\(pokemonImageUrl)\(object.name).png")!
-            
-            URLSession.shared.dataTask(with: url) { [weak self] (data, _, _) in
-                if let data = data {
-                    
-                    DispatchQueue.main.async {
-                        UserDefaults.standard.set(data, forKey: "\(pokemonImageUrl)\(object.name).png")
-                        cell.pokeImage.image = UIImage(data: data)
-                    }
-                    
-                }
-            }.resume()
-        }*/
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -279,12 +256,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         cell.pokeImage.backgroundColor = .white
-        
-        /*AF.request(pokemonImageUrl + "\(cell.pokeNameLabel.text!).png").responseData { (result) in
-            
-            cell.pokeImage.image = UIImage(data: result.data!)
-            
-        }*/
         
         fetchPoke(id: "\(cell.cellIndex + 1)", for: cell)
         
